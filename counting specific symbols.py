@@ -1,4 +1,5 @@
 def counting_symbols(text, symbols):
+    #counts symbols in string text which are included in string symbols
     return len([x for x in text.lower() if x in symbols]) 
     
 def main():
