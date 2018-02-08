@@ -52,8 +52,11 @@ class Vigener():
 
 
     def __set_password(self, key):
-        self.password = key * (len(self.text) // len(key)) \
-                            + key[:len(self.text) % len(key)]        
+        if len(key) < len(self.password):
+            self.password = key * (len(self.text) // len(key)) \
+                                + key[:len(self.text) % len(key)]
+        else:
+            key = key[:len(self.password)]
 
     def __line(self, a):
         b = self.alphabet.find(a)
