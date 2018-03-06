@@ -20,7 +20,7 @@ MORSE = {'A': '. —',   'B': '— . . .',  'C': '— . — .',
 
 DIV = '   '
 revMorse = dict((v, k) for k, v in MORSE.items())
-print(revMorse)
+
 introduction = """
 ***** INTERNATIONAL MORSE CODE *****
 1. The length of a dot is one unit.
@@ -40,21 +40,25 @@ def to_morse(s):
         if char in MORSE:
             result = result + MORSE[char] + DIV
     if result.strip():
-        return result
+        return result.strip()
     else:
-        return False
+        return 'Wrong input'
 
 
 def to_letters(s):
     a = s.replace('-','—').split(DIV)
     result = ''
     for item in a:
+        item = item.strip()
         if item in revMorse:
             result = result + revMorse[item]
-    if result.strip():
+        if item == '':
+            result =  result + ' '
+    result = result.strip().replace('  ', ' ')
+    if result:
         return result
     else:
-        return False
+        return 'Wrong input'
 
 
 def main():
